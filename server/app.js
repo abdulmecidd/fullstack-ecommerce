@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 var app = express();
 
@@ -15,7 +16,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
 
+// Auth Routes
 app.use("/api/auth", authRoutes);
+// Product Routes
+app.use("/api/product", productRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
