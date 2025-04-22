@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
-
+const cors = require("cors");
 var app = express();
 
 app.use(logger("dev"));
@@ -15,6 +15,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
+
+// @Todo: Rewrite this middleware in the future.
+app.use(cors());
 
 // Auth Routes
 app.use("/api/auth", authRoutes);
